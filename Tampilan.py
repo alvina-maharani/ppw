@@ -268,7 +268,7 @@ with topik :
 
     st.header ("Topik Modelling LDA")
 
-    url = 'https://raw.githubusercontent.com/alvina-maharani/ppw/main/TermFrequensi.csv'
+    url = 'https://raw.githubusercontent.com/alvina-maharani/ppw/main/datatokenizinggg.csv'
     data = pd.read_csv(url)
     data
 
