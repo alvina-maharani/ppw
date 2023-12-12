@@ -64,7 +64,7 @@ with Klasifikasi:
         return [term_dict[term] for term in document]
     
 
-    df = pd.read_excel("Hasil-Prepos-fix.xlsx")
+    df = pd.read_excel("https://github.com/alvina-maharani/ppw/raw/main/Hasil-Prepos-fix.xlsx")
 
 
     def labels(rate):
