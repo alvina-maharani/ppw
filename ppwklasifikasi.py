@@ -157,6 +157,6 @@ with Preprocessing:
     st.write(masukkan_kalimat)
 
 with Akurasi:
-    data_akurasi = pd.read_excel("Akurasi.xlsx")
+    data_akurasi = pd.read_excel("https://github.com/alvina-maharani/ppw/raw/main/Akurasi.xlsx")
     del data_akurasi["Unnamed: 0"]
     data_akurasi
