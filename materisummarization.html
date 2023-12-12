@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Pencarian &amp; Penambangan Web - 2&nbsp; B. Teks Summarization</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./materikatakunci.html" rel="next">
+<link href="./matericlustering.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./materisummarization.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">**B. Teks Summarization**</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Pencarian &amp; Penambangan Web</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tugas 1</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./matericlustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>A. CLUSTERING DATA</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./materisummarization.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>B. Teks Summarization</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./materikatakunci.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>C. EKSTRAKSI KATA KUNCI</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data"><span class="header-section-number">3</span> <strong>Data</strong></a></li>
+  <li><a href="#tokenisasi" id="toc-tokenisasi" class="nav-link" data-scroll-target="#tokenisasi"><span class="header-section-number">4</span> <strong>Tokenisasi</strong></a></li>
+  <li><a href="#cosine-similarity" id="toc-cosine-similarity" class="nav-link" data-scroll-target="#cosine-similarity"><span class="header-section-number">5</span> <strong>Cosine Similarity</strong></a></li>
+  <li><a href="#visualisasi-graph" id="toc-visualisasi-graph" class="nav-link" data-scroll-target="#visualisasi-graph"><span class="header-section-number">6</span> <strong>Visualisasi Graph</strong></a></li>
+  <li><a href="#page-rank" id="toc-page-rank" class="nav-link" data-scroll-target="#page-rank"><span class="header-section-number">7</span> <strong>Page Rank</strong></a></li>
+  <li><a href="#closseness-centrality" id="toc-closseness-centrality" class="nav-link" data-scroll-target="#closseness-centrality"><span class="header-section-number">8</span> <strong>Closseness Centrality</strong></a>
+  <ul class="collapse">
+  <li><a href="#eigenvector-centrality" id="toc-eigenvector-centrality" class="nav-link" data-scroll-target="#eigenvector-centrality"><span class="header-section-number">8.1</span> <strong>Eigenvector Centrality</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>B. Teks Summarization</strong></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Teks summarization adalah suatu metode komputasional yang bertujuan untuk membuat ringkasan atau cuplikan singkat dari teks yang lebih panjang atau kompleks. Tujuan utamanya adalah untuk menyajikan informasi penting tanpa kehilangan makna atau esensi dari teks asli. Ada dua jenis pendekatan utama dalam teks summarization: ekstraktif dan abstraktif.</p>
+<ol type="1">
+<li><strong>Ekstraktif:</strong>
+<ul>
+<li>Pendekatan ekstraktif membuat ringkasan dengan mengekstrak frasa atau kalimat yang dianggap paling penting dari teks asli.</li>
+<li>Sistem melakukan analisis terhadap teks, menilai pentingnya setiap kalimat, dan memilih kalimat-kalimat tersebut untuk membentuk ringkasan.</li>
+<li>Keuntungan dari pendekatan ini adalah kesesuaian langsung dengan teks sumber, namun bisa kurang koheren karena hanya menggabungkan kalimat-kalimat yang sudah ada.</li>
+</ul></li>
+<li><strong>Abstraktif:</strong>
+<ul>
+<li>Pendekatan abstraktif lebih canggih karena sistem menciptakan ringkasan baru yang mungkin tidak ada dalam teks sumber.</li>
+<li>Sistem ini memahami makna dan konteks dari teks, lalu menggunakan kata-kata atau kalimat baru untuk merangkum informasi.</li>
+<li>Meskipun lebih fleksibel, abstraktif summarization dapat menjadi lebih kompleks karena memerlukan pemahaman yang lebih mendalam terhadap isi teks.</li>
+</ul></li>
+</ol>
+<p>Aplikasi teks summarization melibatkan sejumlah kegiatan, termasuk:</p>
+<ul>
+<li><p><strong>Cepat Mencari Informasi:</strong> Memungkinkan pengguna untuk mendapatkan ringkasan cepat dari teks panjang, sangat berguna dalam pencarian informasi di internet.</p></li>
+<li><p><strong>Pemrosesan Bahasa Alami:</strong> Meningkatkan kemampuan komputer untuk memahami dan merespons teks manusia, membuat interaksi lebih efisien.</p></li>
+<li><p><strong>Analisis Sentimen:</strong> Memudahkan analisis sentimen dengan merangkum pandangan atau opini yang dominan dari berbagai sumber.</p></li>
+</ul>
+<p>Meskipun teks summarization memiliki manfaat besar, tantangan utamanya termasuk mempertahankan keakuratan informasi dan memastikan keseluruhan ringkasan tetap koheren dan bermakna. Seiring dengan perkembangan teknologi pemrosesan bahasa alami, teks summarization terus menjadi fokus penelitian untuk meningkatkan kualitas dan aplikasinya dalam berbagai bidang.</p>
+<p>Mengerjakan teks summarization melibatkan beberapa tahapan. Berikut adalah alur umum dalam melakukan teks summarization:</p>
+<ol type="1">
+<li><strong>Pemahaman Teks Asli:</strong>
+<ul>
+<li>Baca dengan cermat teks asli untuk memahami isi, konteks, dan tujuan utama dari teks tersebut.</li>
+<li>Identifikasi informasi pokok, gagasan utama, dan bagian-bagian kunci yang ingin dicakup dalam ringkasan.</li>
+</ul></li>
+<li><strong>Pemilihan Metode Summarization:</strong>
+<ul>
+<li>Tentukan jenis summarization yang paling sesuai: ekstraktif atau abstraktif, berdasarkan kebutuhan dan karakteristik teks.</li>
+<li>Ekstraktif memilih kalimat atau frasa yang penting, sementara abstraktif menciptakan kalimat baru untuk merangkum.</li>
+</ul></li>
+<li><strong>Pembuatan Model atau Algoritma:</strong>
+<ul>
+<li>Untuk ekstraktif, buat model atau algoritma untuk menilai pentingnya setiap kalimat berdasarkan kriteria tertentu (frekuensi kata, entitas penting, dll.).</li>
+<li>Untuk abstraktif, kembangkan model yang dapat memahami makna kalimat dan menciptakan ringkasan baru.</li>
+</ul></li>
+<li><strong>Pemrosesan Bahasa Alami (NLP):</strong>
+<ul>
+<li>Gunakan teknik pemrosesan bahasa alami untuk memahami dan menguraikan teks.</li>
+<li>Identifikasi struktur kalimat, hubungan antarkalimat, dan makna dari setiap frasa.</li>
+</ul></li>
+<li><strong>Ekstraksi atau Pembuatan Ringkasan:</strong>
+<ul>
+<li>Jika ekstraktif, ekstrak kalimat-kalimat atau frasa-frasa yang memiliki nilai penting.</li>
+<li>Jika abstraktif, gunakan model atau algoritma untuk membuat kalimat-kalimat baru yang merangkum informasi utama.</li>
+</ul></li>
+<li><strong>Evaluasi dan Koreksi:</strong>
+<ul>
+<li>Lakukan evaluasi terhadap ringkasan yang dihasilkan.</li>
+<li>Pastikan ringkasan mencakup informasi utama dan tetap koheren dengan teks asli.</li>
+<li>Koreksi manual mungkin diperlukan untuk memastikan kualitas ringkasan.</li>
+</ul></li>
+<li><strong>Uji Coba dan Evaluasi Performa:</strong>
+<ul>
+<li>Uji coba ringkasan pada berbagai jenis teks dan ukuran untuk mengevaluasi kinerja model atau algoritma.</li>
+<li>Sesuaikan parameter atau model jika diperlukan untuk meningkatkan hasil.</li>
+</ul></li>
+<li><strong>Implementasi dan Integrasi:</strong>
+<ul>
+<li>Terapkan hasil ringkasan pada aplikasi atau sistem yang diinginkan, seperti mesin pencari atau asisten virtual.</li>
+<li>Integrasikan teknologi summarization ke dalam proses kerja yang lebih besar jika diperlukan.</li>
+</ul></li>
+</ol>
+<p>Alur ini memberikan pandangan umum tentang bagaimana teks summarization dapat dikerjakan. Penting untuk diingat bahwa proses ini dapat bervariasi tergantung pada kompleksitas teks, tujuan ringkasan, dan jenis aplikasi yang diinginkan.</p>
+<p>Inti alur dari teks summarization adalah data di tokenisasi, dilakukan perhitungan TF-IDF, dihitung kesamaan kosinusnya, visualisasi graph, menampilkan closeenes centrality, menampilkan page rank nya, menampilkan EigenvalueCentrality, dan menamilkan EigenvectorCentrality. Sehingga dapat diketahui hasil summaarizationnya apakah terdapat perbedaan atau tidak.</p>
+<p>Pertama, kita bahas teks Summarization dengan preprocessing. Data yang digunakan menggunakan data berita dari Detik.com dengan metode crawling seperti penjelasan sebelumnya.</p>
+<section id="data" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <strong>Data</strong></h1>
+<p>data yang digunakan adalah data hasil crawling yang di upload ke github. Sehingga, kita tinggal memanggil link githubnya untuk mengakses datanya. Jumlah data yang digunakan hanya satu konten berita.</p>
+<p>berikut ini codenya ketika kita akan mengakses datanya</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="67233b91-aa6e-454e-c20e-f455122af8c7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/alvina-maharani/ppw/main/cobappwbuaru.xlsx'</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(url)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+
+  <div id="df-d2d3db45-28ab-4961-8268-ff0fa02919e7" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Judul</th>
+<th data-quarto-table-cell-role="th">Tanggal</th>
+<th data-quarto-table-cell-role="th">Link</th>
+<th data-quarto-table-cell-role="th">Konten</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Reog hingga Pentas Tari Meriahkan Karnaval Bud...</td>
+<td>19 Agu 2023 15:01</td>
+<td>https://www.detik.com/jateng/berita/d-6884838/...</td>
+<td>Kabupaten Klaten menyelenggarakan karnaval bud...</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d2d3db45-28ab-4961-8268-ff0fa02919e7')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-d2d3db45-28ab-4961-8268-ff0fa02919e7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d2d3db45-28ab-4961-8268-ff0fa02919e7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<p>Code tersebut digunakan untuk membaca data dari file Excel yang terletak di URL tertentu menggunakan Python. Alamat file Excel disimpan dalam variabel <code>url</code>, yang kemudian digunakan sebagai parameter dalam fungsi <code>pd.read_excel(url)</code> dari library pandas. Proses ini menghasilkan dataframe (df), yang merupakan struktur data tabel yang memuat data dari file Excel. Dataframe ini dapat digunakan untuk melakukan berbagai operasi analisis data, seperti menampilkan sebagian data awal atau akhir, mengakses kolom-kolom tertentu, atau melaksanakan perhitungan statistik. Dengan menggunakan kode tersebut, pengguna dapat dengan mudah membaca dan memanipulasi data dari file Excel yang tersimpan secara online.</p>
+</section>
+<section id="tokenisasi" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> <strong>Tokenisasi</strong></h1>
+<p>Preprocessing yang digunakan dalam teks summarization hanyalah tokenisasi. Meskipun langkah-langkah preprocessing dalam teks summarization seringkali melibatkan lebih dari sekadar tokenisasi, ada argumen untuk mempertimbangkan penggunaan hanya tokenisasi tergantung pada konteks tugas dan sifat dataset. Jika tujuan utama adalah menjaga kesederhanaan model dan efisiensi komputasional, serta datasetnya sudah cukup bersih tanpa gangguan yang signifikan, maka tokenisasi dapat menjadi langkah preprocessing yang memadai. Terutama dalam rangka membangun model ringkasan ekstraktif, di mana informasi kunci dapat diakses melalui token kata, penggunaan hanya tokenisasi dapat meningkatkan keterbacaan, interpretabilitas, dan performa yang memadai. Meski demikian, keputusan ini sebaiknya tetap didasarkan pada evaluasi khusus dataset dan tujuan tugas yang ingin dicapai.</p>
+<p>Berikut code proses tokenisasinya..</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> sent_tokenize</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Konten'</span>] <span class="op">=</span> df[<span class="st">'Konten'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: sent_tokenize(<span class="bu">str</span>(x)))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>#<strong>TF-IDF</strong></p>
+<p>TF-IDF (Term Frequency-Inverse Document Frequency) adalah metode statistik yang digunakan dalam teks summarization untuk menilai kepentingan relatif suatu kata dalam suatu dokumen atau korpus. Rumus TF-IDF menggabungkan Term Frequency (TF), yang mengukur seberapa sering suatu kata muncul dalam dokumen, dengan Inverse Document Frequency (IDF), yang mempertimbangkan seberapa umum atau unik kata tersebut dalam seluruh korpus. Penggunaan TF-IDF dalam teks summarization memberikan bobot pada kata-kata berdasarkan keunikannya dan membantu mengidentifikasi kata-kata kunci serta menekankan informasi penting. Selain itu, TF-IDF dapat digunakan untuk mereduksi dimensi dalam representasi teks, memilih fitur-fitur informatif, dan menyediakan landasan bagi ekstraksi informasi kunci dalam pembuatan ringkasan. Dengan memperhatikan frekuensi dan distribusi kata-kata, TF-IDF membantu meningkatkan kualitas representasi teks, memfasilitasi proses ekstraksi informasi, dan menyokong tugas teks summarization secara efektif.</p>
+<p>berikut code untuk tf idf</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> TfidfVectorizer</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df_tampilan <span class="op">=</span> pd.DataFrame(df_tampilan)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Hitung TF untuk setiap kata dalam setiap kalimat</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>tf_values <span class="op">=</span> []</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, row <span class="kw">in</span> df_tampilan.iterrows():</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    tf_dict <span class="op">=</span> {}</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> word <span class="kw">in</span> row[<span class="st">'kalimat'</span>].split():</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        tf_dict[word] <span class="op">=</span> row[<span class="st">'kalimat'</span>].split().count(word) <span class="op">/</span> row[<span class="st">'jumlah_kata'</span>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    tf_values.append(tf_dict)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghitung IDF untuk setiap kata</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>idf_values <span class="op">=</span> {}</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>total_documents <span class="op">=</span> <span class="bu">len</span>(df_tampilan)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tf <span class="kw">in</span> tf_values:</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> word <span class="kw">in</span> tf:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> word <span class="kw">in</span> idf_values:</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>            idf_values[word] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            idf_values[word] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghitung TF-IDF</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>tfidf_values <span class="op">=</span> []</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tf <span class="kw">in</span> tf_values:</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    tfidf_dict <span class="op">=</span> {}</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> word, tf_value <span class="kw">in</span> tf.items():</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        tfidf_dict[word] <span class="op">=</span> tf_value <span class="op">*</span> math.log(total_documents <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> idf_values[word]))</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    tfidf_values.append(tfidf_dict)</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Konversi list of dicts ke dalam DataFrame</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>df_tfidf <span class="op">=</span> pd.DataFrame(tfidf_values)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>df_tfidf.fillna(<span class="dv">0</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Tampilkan hasil TF-IDF DataFrame</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>df_tfidf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Kode tersebut menggunakan Python dan beberapa pustaka seperti pandas dan scikit-learn untuk menghitung Term Frequency-Inverse Document Frequency (TF-IDF) dari suatu dataset teks yang disimpan dalam DataFrame. Pertama, kode menghitung Term Frequency (TF) untuk setiap kata dalam setiap kalimat di DataFrame, diikuti dengan perhitungan Inverse Document Frequency (IDF) untuk setiap kata. Selanjutnya, kode menggabungkan nilai TF dan IDF untuk menghitung nilai TF-IDF. Hasilnya disajikan dalam DataFrame baru (df_tfidf) di mana setiap kolom mewakili kata-kata unik, dan setiap baris mewakili dokumen atau kalimat, dengan nilai-nilai TF-IDF sebagai bobotnya. Kode ini memberikan representasi numerik yang menggambarkan pentingnya setiap kata dalam konteks keseluruhan dataset, dan dapat digunakan sebagai langkah awal dalam analisis teks atau tugas seperti klasifikasi dokumen atau pemodelan topik.</p>
+</section>
+<section id="cosine-similarity" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> <strong>Cosine Similarity</strong></h1>
+<p>Cosine similarity adalah metrik yang digunakan dalam teks summarization untuk mengukur sejauh mana dua vektor teks mirip berdasarkan sudut cosine antara mereka. Dalam konteks ini, vektor teks direpresentasikan oleh nilai TF-IDF (Term Frequency-Inverse Document Frequency) dari kata-kata dalam dokumen atau kalimat. Cosine similarity mengukur kesamaan antara dua vektor dengan menghitung cosinus dari sudut yang terbentuk oleh vektor-vektor tersebut dalam ruang vektor. Nilai cosine similarity berkisar antara 0 (vektor sepenuhnya ortogonal, tidak ada kesamaan) hingga 1 (vektor sepenuhnya sejajar, kesamaan maksimum). Dalam konteks summarization, cosine similarity digunakan untuk mengevaluasi seberapa mirip suatu kalimat atau dokumen dengan kalimat atau dokumen lainnya. Metrik ini memungkinkan model untuk menentukan tingkat relevansi atau kemiripan antara teks, dan hasilnya dapat digunakan untuk memilih atau mengurutkan kalimat-kalimat yang paling relevan dalam proses pembuatan ringkasan. Semakin tinggi nilai cosine similarity, semakin mirip atau relevan kedua vektor tersebut, yang dapat menghasilkan ringkasan yang lebih akurat dan informatif.</p>
+<p>Agar lebih mudah memahami perhitungan cosine similarity perhatikan hal berikut :</p>
+<p>Bayangkan kita memiliki dua daftar kata-kata yang mewakili dua kalimat atau dokumen. Untuk mengukur seberapa mirip keduanya, kita menggunakan cosine similarity. Langkah-langkahnya adalah sebagai berikut:</p>
+<ol type="1">
+<li><strong>Hitung Jumlah Kalikan:</strong>
+<ul>
+<li>Hitung hasil penjumlahan dari perkalian setiap kata pada posisi yang sama dari kedua daftar kata.</li>
+</ul></li>
+<li><strong>Hitung Panjang (Magnitude):</strong>
+<ul>
+<li>Hitung panjang (magnitude) dari masing-masing daftar kata.</li>
+<li>Panjangnya dihitung dengan menjumlahkan kuadrat dari setiap kata dan mengakarkan hasilnya.</li>
+</ul></li>
+<li><strong>Hitung Cosine Similarity:</strong>
+<ul>
+<li>Bagi hasil penjumlahan kalikan tadi dengan hasil perkalian panjang kedua daftar kata.</li>
+<li>Ini memberikan nilai cosine similarity antara 0 (tidak mirip) dan 1 (sangat mirip).</li>
+</ul></li>
+</ol>
+<p>Contoh: - Daftar kata pertama: [3, 1, 2] - Daftar kata kedua: [1, 2, 0]</p>
+<ol type="1">
+<li>Hitung Jumlah Kalikan: $ (3 ) + (1 ) + (2 ) = 5 $</li>
+<li>Hitung Panjang:
+<ul>
+<li>Panjang Daftar Pertama: $ = $</li>
+<li>Panjang Daftar Kedua: $ = $</li>
+</ul></li>
+<li>Hitung Cosine Similarity: $ $</li>
+</ol>
+<p>Hasilnya adalah sekitar 0.75, yang berarti kedua daftar kata tersebut cukup mirip. Semakin mendekati 1, semakin mirip keduanya.</p>
+<p>berikut implementasi dalam bentuk code nya</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics.pairwise <span class="im">import</span> cosine_similarity</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df_tf_idf <span class="op">=</span> pd.DataFrame(df_tfidf)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df_tf_idf <span class="op">=</span> df_tf_idf.fillna(<span class="dv">0</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>tfidf_matrix <span class="op">=</span> df_tf_idf.to_numpy()</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghitung kesamaan kosinus</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>similarity_matrix <span class="op">=</span> cosine_similarity(tfidf_matrix)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>df_tf_idf <span class="op">=</span> pd.DataFrame(similarity_matrix)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>kalimat <span class="op">=</span> [<span class="st">"Kalimat "</span> <span class="op">+</span> <span class="bu">str</span>(i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(similarity_matrix) <span class="op">+</span> <span class="dv">1</span>)]</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>df_tf_idf <span class="op">=</span> df_tf_idf.set_axis(kalimat, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>df_tf_idf <span class="op">=</span> df_tf_idf.set_axis(kalimat, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>df_tf_idf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Kode ini menggunakan pustaka pandas dan scikit-learn untuk menghitung cosine similarity antara kalimat-kalimat dalam suatu dataset teks yang telah diubah menjadi representasi TF-IDF. Pertama, DataFrame df_tfidf yang berisi nilai-nilai TF-IDF diisi dengan nilai 0 untuk menggantikan nilai-nilai NaN. Selanjutnya, matriks TF-IDF diubah menjadi bentuk array NumPy. Kemudian, menggunakan fungsi cosine_similarity dari scikit-learn, matriks kesamaan kosinus dihitung dari matriks TF-IDF. Hasilnya disimpan dalam DataFrame baru df_tf_idf, yang berfungsi sebagai matriks kesamaan kosinus antar kalimat. Nama-nama kalimat ditambahkan ke DataFrame untuk memudahkan identifikasi, dan DataFrame akhirnya berisi nilai-nilai cosine similarity antara setiap pasangan kalimat dalam dataset teks. Code ini berguna dalam analisis kesamaan antar kalimat, seperti dalam proses pengelompokan atau penentuan relevansi kalimat untuk tugas seperti teks summarization.</p>
+</section>
+<section id="visualisasi-graph" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> <strong>Visualisasi Graph</strong></h1>
+<p>Visualisasi graf dari cosine similarity dengan nilai bulatan (nodes) dan threshold merupakan metode yang efektif untuk memahami dan menganalisis hubungan kesamaan antar elemen dalam dataset teks. Dalam graf ini, setiap elemen, seperti kalimat atau dokumen, direpresentasikan sebagai simpul, sementara sisi antara simpul-simpul tersebut mencerminkan nilai kesamaan kosinus antara elemen-elemen tersebut. Pemberian warna dan ketebalan pada sisi graf dapat memberikan visualisasi yang jelas tentang tingkat kesamaan: nilai cosine similarity yang tinggi dapat ditandai dengan warna yang lebih gelap atau sisi yang lebih tebal, sedangkan nilai yang rendah dapat ditandai dengan warna yang lebih terang atau sisi yang lebih tipis. Penambahan label pada setiap simpul memudahkan identifikasi elemen yang direpresentasikan. Dengan menetapkan threshold atau ambang batas, hanya sisi dengan nilai kesamaan di atas ambang batas yang diwakili dalam graf, memungkinkan fokus pada hubungan yang dianggap signifikan. Visualisasi ini menjadi alat yang berguna dalam menganalisis struktur data teks, membantu pemahaman pola dan kelompok kesamaan, terutama dalam konteks tugas seperti teks summarization atau pengelompokan teks.</p>
+</section>
+<section id="page-rank" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> <strong>Page Rank</strong></h1>
+<p>PageRank adalah algoritma yang digunakan oleh mesin pencari, terutama oleh Google, untuk menilai dan mengurutkan halaman web berdasarkan tingkat otoritas dan relevansinya. Konsepnya mirip dengan cara kita memberi peringkat populeritas atau pentingnya halaman web. Bayangkan setiap halaman web sebagai orang dalam sebuah jaringan sosial. Jika banyak orang (halaman web lain) menghubungi atau memberi suara pada seseorang (halaman web), orang itu dianggap penting. Dengan PageRank, setiap halaman web memberikan “suara” dalam bentuk tautan ke halaman lain. Semakin banyak tautan masuk yang dimiliki halaman web, semakin tinggi peringkatnya. Tetapi tidak semua suara dianggap sama. Suara dari halaman yang memiliki peringkat tinggi lebih berharga daripada suara dari halaman dengan peringkat rendah. Dengan cara ini, PageRank membantu mesin pencari menentukan halaman web mana yang paling penting dan relevan, sehingga hasil pencarian yang diberikan kepada pengguna menjadi lebih baik.</p>
+<p>untuk lebih memahami page rank, perhatikan perhitungan berikut :</p>
+<p>PageRank dihitung menggunakan algoritma yang mempertimbangkan jumlah dan kualitas tautan yang mengarah ke suatu halaman web. Secara matematis, rumus PageRank dapat dijelaskan sebagai berikut:</p>
+<p>$ (A) = (1 - d) + d ( + + + ) $</p>
+<p>Di sini: - <span class="math inline">\(\text{PR}(A)\)</span> adalah PageRank dari halaman web A. - <span class="math inline">\((d)\)</span> adalah faktor damping (biasanya diatur sekitar 0,85), yang merepresentasikan probabilitas bahwa pengguna akan mengikuti tautan daripada menavigasi ke halaman acak. - <span class="math inline">\(\text{PR}(B)\)</span>, <span class="math inline">\(\text{PR}(C)\)</span>, …, <span class="math inline">\(\text{PR}(N)\)</span> adalah PageRank dari halaman-halaman yang terhubung ke halaman A. - <span class="math inline">\(L(B)\)</span>, <span class="math inline">\(L(C)\)</span>, …, <span class="math inline">\(L(N)\)</span> adalah jumlah tautan keluar dari halaman-halaman B, C, …, N.</p>
+<p>Mari kita ilustrasikan ini dengan contoh sederhana:</p>
+<ol type="1">
+<li>Ada tiga halaman web: A, B, dan C.</li>
+<li>Semua halaman memiliki PageRank awal yang sama (misalnya, 1/3).</li>
+<li>Halaman B dan C memiliki tautan ke halaman A.</li>
+</ol>
+<p>Mari kita hitung PageRank untuk halaman A:</p>
+<p>$ (A) = (1 - 0.85) + 0.85 ( + ) $</p>
+<p>$(A) = 0.15 + 0.85 ( ) $</p>
+<p>$ (A) = 0.15 + 0.85 $</p>
+<p>$ (A) = 0.15 + 0.566666… $</p>
+<p>$ (A) $</p>
+<p>Ini adalah perhitungan sederhana untuk mengilustrasikan konsep PageRank. Dalam praktiknya, algoritma PageRank diiterasi secara berulang hingga konvergensi untuk mendapatkan nilai akhir PageRank yang lebih akurat.</p>
+<p>berikut code untuk page rank</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hitung PageRank</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>pagerank <span class="op">=</span> nx.pagerank(G)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan Closeness Centrality</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"PageRank:"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node, rank <span class="kw">in</span> pagerank.items():</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Node </span><span class="sc">{</span>node<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>rank<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan 3 kalimat dengan PageRank tertinggi</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>sorted_pagerank <span class="op">=</span> <span class="bu">sorted</span>(pagerank.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"============================="</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 3 sentences based on PageRank:"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node, rank <span class="kw">in</span> sorted_pagerank[:<span class="dv">3</span>]:</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_tampilan[<span class="st">'kalimat'</span>].iloc[node])</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"============================="</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 3 node based on PageRank:"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node, rank <span class="kw">in</span> sorted_pagerank[:<span class="dv">3</span>]:</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Node </span><span class="sc">{</span>node<span class="sc">}</span><span class="ss"> dengan PageRank </span><span class="sc">{</span>rank<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#sorted_pagerank = sorted(pagerank.items(), key=lambda x: x[1],&nbsp;reverse=True)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Kode tersebut menggunakan pustaka NetworkX untuk menghitung PageRank dari graf yang diberikan. Pertama, PageRank dihitung menggunakan fungsi nx.pagerank(G), di mana G adalah graf yang mewakili hubungan antar elemen (misalnya, kalimat dalam dataset). Hasil PageRank kemudian ditampilkan dengan mencetak nilai PageRank untuk setiap elemen dalam graf.</p>
+<p>Selanjutnya, kode mengurutkan elemen-elemen berdasarkan PageRank secara menurun, dan menampilkan 3 kalimat dengan PageRank tertinggi dari DataFrame yang disimpan di df_tampilan. Ini membantu dalam menyoroti kalimat-kalimat yang dianggap paling penting berdasarkan algoritma PageRank.</p>
+<p>Terakhir, kode mencetak informasi tentang 3 elemen (node) dengan PageRank tertinggi, termasuk nomor node dan nilai PageRank. Ini memberikan gambaran tentang elemen-elemen yang dianggap paling otoritatif atau penting dalam graf berdasarkan algoritma PageRank.</p>
+</section>
+<section id="closseness-centrality" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> <strong>Closseness Centrality</strong></h1>
+<p>Closeness centrality adalah salah satu metrik sentralitas dalam jaringan yang digunakan untuk mengukur seberapa dekat suatu node dengan node lainnya dalam graf. Dalam konteks teks summarization, closeness centrality dapat diaplikasikan pada representasi graf dari hubungan antara kalimat-kalimat dalam suatu teks. Metrik ini memberikan informasi tentang seberapa mudah suatu kalimat dapat diakses oleh kalimat-kalimat lain dalam teks tersebut.</p>
+<p>Dalam implementasi kode yang Anda berikan, closeness centrality dihitung untuk setiap kalimat dalam graf representasi hubungan kalimat (misalnya, graf kalimat yang terhubung berdasarkan kosinus similarity). Kalimat yang memiliki closeness centrality tinggi cenderung menjadi pusat komunikasi dalam teks, karena lebih dekat dengan kalimat-kalimat lainnya.</p>
+<p>Dalam konteks teks summarization, closeness centrality dapat membantu mengidentifikasi kalimat-kalimat yang secara esensial “menghubungkan” atau merepresentasikan inti informasi dalam teks. Kalimat-kalimat ini memiliki potensi untuk menjadi penting dalam proses pembuatan ringkasan karena mereka memiliki keterkaitan yang erat dengan kalimat-kalimat lainnya. Memilih kalimat-kalimat dengan closeness centrality tinggi dapat membantu dalam mengekstraksi inti informasi atau gagasan utama dari teks, yang merupakan langkah kritis dalam proses teks summarization. Oleh karena itu, closeness centrality menjadi salah satu faktor yang dapat digunakan untuk menentukan relevansi dan kontribusi kalimat dalam memahami struktur dan makna keseluruhan teks.</p>
+<p>Closeness centrality mengukur seberapa dekat suatu node (kalimat dalam konteks teks summarization) dengan semua node lainnya dalam graf. Rumusnya dapat dijelaskan sebagai:</p>
+<p>$ C(x) = $</p>
+<p>Di sini: - $ C(x) $ adalah closeness centrality dari node $ x $ (kalimat). - $ d(x, y) $ adalah jarak terpendek (misalnya, jumlah tautan atau kesamaan kosinus) antara node $ x $ dan node $ y $.</p>
+<p>Closeness centrality diperoleh dengan membalikkan jumlah jarak terpendek dari node $ x $ ke semua node lainnya. Semakin kecil nilai $ _{y x} d(x, y) $, semakin besar nilai closeness centrality-nya. Dalam konteks teks summarization, kalimat-kalimat dengan closeness centrality yang tinggi cenderung menjadi pusat atau penting dalam merangkum informasi karena dekat dengan kalimat-kalimat lainnya dalam teks.</p>
+<p>Mari kita lihat studi kasus sederhana untuk menghitung closeness centrality dari beberapa kalimat dalam suatu teks. Anggaplah kita memiliki tiga kalimat:</p>
+<ol type="1">
+<li>“Hewan peliharaan adalah teman yang baik.”</li>
+<li>“Anjing dan kucing adalah contoh hewan peliharaan.”</li>
+<li>“Setiap orang harus memberi makan dan merawat hewan peliharaan dengan baik.”</li>
+</ol>
+<p>Langkah-langkahnya sebagai berikut:</p>
+<ol type="1">
+<li><p><strong>Buat Graf Representasi Hubungan:</strong></p>
+<ul>
+<li>Hubungan antar kalimat dapat direpresentasikan dengan graf, di mana setiap node adalah kalimat, dan ada sisi (edge) antara dua kalimat jika ada hubungan atau kesamaan antara keduanya.</li>
+</ul>
+<p>$</p>
+<span class="math display">\[\begin{matrix}
+&amp; \text{1} &amp; \text{2} &amp; \text{3} \\
+\text{1} &amp; - &amp; \checkmark &amp; \checkmark \\
+\text{2} &amp; \checkmark &amp; - &amp; \checkmark \\
+\text{3} &amp; \checkmark &amp; \checkmark &amp; -
+\end{matrix}\]</span>
+<p>$</p>
+<p>Di sini, tanda <span class="math inline">\(\checkmark\)</span> menunjukkan adanya hubungan atau kesamaan antara dua kalimat.</p></li>
+<li><p><strong>Hitung Jarak Terpendek:</strong></p>
+<ul>
+<li>Hitung jarak terpendek dari setiap kalimat ke kalimat lainnya. Misalnya, dapat menggunakan jumlah tautan atau kesamaan kosinus sebagai metrik jarak.</li>
+</ul>
+<p>$</p>
+<span class="math display">\[\begin{matrix}
+&amp; \text{1} &amp; \text{2} &amp; \text{3} \\
+\text{1} &amp; - &amp; 1 &amp; 1 \\
+\text{2} &amp; 1 &amp; - &amp; 1 \\
+\text{3} &amp; 1 &amp; 1 &amp; -
+\end{matrix}\]</span>
+<p>$</p></li>
+<li><p><strong>Hitung Closeness Centrality:</strong></p>
+<ul>
+<li>Gunakan rumus closeness centrality untuk setiap kalimat:</li>
+</ul></li>
+</ol>
+<p>$ <span class="math display">\[\begin{align*}
+   C(1) &amp;= \frac{1}{1+1} = \frac{1}{2} \\
+   C(2) &amp;= \frac{1}{1+1} = \frac{1}{2} \\
+   C(3) &amp;= \frac{1}{1+1} = \frac{1}{2}
+   \end{align*}\]</span> $</p>
+<p>Dalam kasus ini, semua kalimat memiliki closeness centrality yang sama, yaitu $ $.</p>
+<p>Dalam praktiknya, metrik jarak dan kompleksitas graf yang lebih besar dapat mempengaruhi perhitungan closeness centrality. Studi kasus sederhana ini memberikan gambaran tentang bagaimana langkah-langkah dasar dapat diambil untuk menghitung closeness centrality dalam konteks teks summarization.</p>
+<p>berikut code untuk closeness centrality :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Menghitung closeness centrality dari graph</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>closeness <span class="op">=</span> nx.closeness_centrality(G)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan closeness centrality</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Closeness Centrality:"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node, closeness_value <span class="kw">in</span> closeness.items():</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Node </span><span class="sc">{</span>node<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>closeness_value<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Menampilkan 3 kalimat dengan PageRank tertinggi</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>sorted_pagerank <span class="op">=</span> <span class="bu">sorted</span>(closeness.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"============================="</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 3 sentences based on closeness centrality:"</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node, rank <span class="kw">in</span> sorted_pagerank[:<span class="dv">3</span>]:</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(df_tampilan[<span class="st">'kalimat'</span>].iloc[node])</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"============================="</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 3 node based on closeness centrality:"</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node, rank <span class="kw">in</span> sorted_pagerank[:<span class="dv">3</span>]:</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Node </span><span class="sc">{</span>node<span class="sc">}</span><span class="ss"> dengan PageRank </span><span class="sc">{</span>rank<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Code tersebut menggunakan pustaka NetworkX untuk menghitung closeness centrality dari suatu graf (G) yang mewakili hubungan antar elemen, seperti kalimat dalam teks. Pertama, closeness centrality dihitung dengan menggunakan fungsi nx.closeness_centrality(G). Hasilnya disimpan dalam variabel closeness. Selanjutnya, nilai closeness centrality untuk setiap elemen (node) dalam graf ditampilkan dengan mencetaknya.</p>
+<p>Selanjutnya, kode mengurutkan elemen-elemen berdasarkan closeness centrality secara menurun dan menampilkan 3 kalimat dengan closeness centrality tertinggi dari DataFrame yang disimpan di df_tampilan. Ini membantu menyoroti kalimat-kalimat yang dianggap paling sentral atau penting dalam representasi graf.</p>
+<p>Terakhir, kode mencetak informasi tentang 3 elemen (node) dengan closeness centrality tertinggi, termasuk nomor node dan nilai closeness centrality-nya. Ini memberikan gambaran tentang elemen-elemen yang dianggap paling sentral atau dekat dengan elemen lainnya dalam graf berdasarkan closeness centrality.</p>
+<section id="eigenvector-centrality" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="eigenvector-centrality"><span class="header-section-number">8.1</span> <strong>Eigenvector Centrality</strong></h2>
+<p>Eigenvector Centrality adalah metrik sentralitas yang digunakan dalam analisis jaringan untuk mengukur seberapa penting atau sentral suatu node dalam konteks keterhubungan dengan node-node yang juga memiliki sentralitas tinggi. Dalam teks summarization, Eigenvector Centrality dapat diaplikasikan pada representasi graf hubungan antar kalimat atau dokumen.</p>
+<p>Rumus Eigenvector Centrality untuk suatu node <span class="math inline">\(v\)</span> dalam graf adalah sebagai berikut:</p>
+<p>$ C(v) = _{u N(v)} A(u, v) C(u) $</p>
+<p>Di sini: - $ C(v) $ adalah Eigenvector Centrality dari node <span class="math inline">\(v\)</span>. - $ N(v) $ adalah himpunan tetangga dari node <span class="math inline">\(v\)</span>, yaitu node-node yang terhubung langsung dengan <span class="math inline">\(v\)</span>. - $ A(u, v) $ adalah elemen matriks ketetanggaan yang menunjukkan apakah terdapat sisi (edge) antara node <span class="math inline">\(u\)</span> dan <span class="math inline">\(v\)</span>. - $ {λ} $ adalah nilai eigenvalue utama (dominan) dari matriks ketetanggaan.</p>
+<p>Dalam konteks teks summarization, Eigenvector Centrality dapat membantu mengidentifikasi kalimat-kalimat atau dokumen-dokumen yang secara struktural penting dalam jaringan kalimat atau dokumen. Kalimat atau dokumen dengan Eigenvector Centrality yang tinggi cenderung menjadi pusat atau memiliki keterkaitan yang kuat dengan kalimat atau dokumen lain yang juga dianggap penting. Dengan memilih kalimat-kalimat atau dokumen-dokumen ini, kita dapat fokus pada inti informasi atau gagasan utama dalam teks saat melakukan proses summarization. Sehingga, Eigenvector Centrality menjadi alat yang bermanfaat untuk memahami dan mengekstrak elemen-elemen krusial dalam teks.</p>
+<p>Mari kita buat studi kasus sederhana untuk menghitung Eigenvector Centrality pada suatu graf teks. Anggaplah kita memiliki tiga kalimat:</p>
+<ol type="1">
+<li>“Hewan peliharaan adalah teman yang baik.”</li>
+<li>“Anjing dan kucing adalah contoh hewan peliharaan.”</li>
+<li>“Setiap orang harus memberi makan dan merawat hewan peliharaan dengan baik.”</li>
+</ol>
+<p>Langkah-langkahnya sebagai berikut:</p>
+<ol type="1">
+<li><p><strong>Buat Graf Representasi Hubungan:</strong></p>
+<ul>
+<li>Hubungan antar kalimat dapat direpresentasikan dengan graf, di mana setiap node adalah kalimat, dan ada sisi (edge) antara dua kalimat jika ada hubungan atau kesamaan antara keduanya.</li>
+</ul>
+<p>$</p>
+<span class="math display">\[\begin{matrix}
+&amp; \text{1} &amp; \text{2} &amp; \text{3} \\
+\text{1} &amp; - &amp; 1 &amp; 1 \\
+\text{2} &amp; 1 &amp; - &amp; 1 \\
+\text{3} &amp; 1 &amp; 1 &amp; -
+\end{matrix}\]</span>
+<p>$</p>
+<p>Di sini, tanda <span class="math inline">\(1\)</span> menunjukkan adanya hubungan atau kesamaan antara dua kalimat.</p></li>
+<li><p><strong>Hitung Eigenvector Centrality:</strong></p>
+<ul>
+<li>Dengan menggunakan rumus Eigenvector Centrality, kita lakukan iterasi untuk menghitung sentralitas eigenvector untuk setiap kalimat.</li>
+</ul>
+<p>$ C(1) = (1 C(2) + 1 C(3)) $ $ C(2) = (1 C(1) + 1 C(3)) $ $ C(3) = (1 C(1) + 1 C(2)) $</p>
+<p>Iterasi ini dilakukan hingga nilai Eigenvector Centrality konvergen.</p></li>
+<li><p><strong>Normalisasi Nilai:</strong></p>
+<ul>
+<li>Setelah nilai Eigenvector Centrality konvergen, normalisasikan nilainya sehingga total nilai eigenvector adalah 1.</li>
+</ul>
+<p>$ _{i} C(i) = 1 $</p></li>
+</ol>
+<p>Dalam praktiknya, proses ini dapat diimplementasikan dengan menggunakan algoritma numerik atau pustaka komputasi seperti NumPy. Studi kasus ini memberikan gambaran umum tentang cara menghitung Eigenvector Centrality secara manual pada sebuah graf teks sederhana.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./matericlustering.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>A. CLUSTERING DATA</strong></span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./materikatakunci.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>C. EKSTRAKSI KATA KUNCI</strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
