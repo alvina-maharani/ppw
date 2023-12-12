@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import re
 import nltk
+import openpyxl
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
